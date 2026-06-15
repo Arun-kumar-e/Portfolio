@@ -1,0 +1,58 @@
+---
+interface OutputLine {
+  text: string;
+  type?: 'command' | 'success' | 'info' | 'text' | 'error';
+}
+
+interface Props {
+  title: string;
+  lines: OutputLine[];
+}
+
+const { title, lines } = Astro.props;
+---
+
+<div class="w-full overflow-hidden rounded-md border border-hairline bg-primary shadow-level3">
+  <!-- Terminal Title Bar -->
+  <div class="flex items-center justify-between bg-canvas-soft-2 px-4 py-2.5 border-b border-hairline select-none">
+    <div class="flex items-center gap-2">
+      <!-- Terminal dots -->
+      <span class="h-3 w-3 rounded-full bg-error block border border-error-deep/20"></span>
+      <span class="h-3 w-3 rounded-full bg-warning block border border-warning-deep/20"></span>
+      <span class="h-3 w-3 rounded-full bg-cyan block border border-cyan-deep/20"></span>
+    </div>
+    <span class="font-mono text-xs font-medium text-body tracking-normal">{title}</span>
+    <div class="w-10"></div> <!-- spacing balancer -->
+  </div>
+
+  <!-- Terminal Content -->
+  <div class="p-5 font-mono text-[13px] leading-relaxed text-on-primary/95 bg-primary/95 select-text overflow-x-auto">
+    <pre class="m-0 space-y-1 bg-transparent border-0 p-0 text-left rounded-none font-mono filter-none select-text whitespace-pre">
+      {lines.map((line) => {
+        if (line.type === 'command') {
+          return (
+            <div class="text-on-primary font-semibold">
+              <span class="text-mute mr-2">$</span>{line.text}
+            </div>
+          );
+        } else if (line.type === 'success') {
+          return (
+            <div class="text-cyan">{line.text}</div>
+          );
+        } else if (line.type === 'info') {
+          return (
+            <div class="text-violet-soft">{line.text}</div>
+          );
+        } else if (line.type === 'error') {
+          return (
+            <div class="text-error">{line.text}</div>
+          );
+        } else {
+          return (
+            <div class="text-on-primary/80">{line.text}</div>
+          );
+        }
+      })}
+    </pre>
+  </div>
+</div>

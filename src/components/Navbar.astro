@@ -1,0 +1,87 @@
+---
+const navLinks = [
+  { name: "About", href: "#about" },
+  { name: "Skills", href: "#skills" },
+  { name: "Experience", href: "#experience" },
+  { name: "Projects", href: "#projects" },
+  { name: "Education", href: "#education" }
+];
+---
+
+<header class="sticky top-0 z-50 w-full border-b border-hairline bg-canvas/80 backdrop-blur-md">
+  <div class="mx-auto flex h-16 max-w-6xl items-center justify-between px-6">
+    <!-- Logo -->
+    <a href="#" class="flex items-center gap-2 font-mono text-sm font-semibold tracking-tight text-ink">
+      <span class="flex h-7 w-7 items-center justify-center rounded-sm bg-primary text-xs font-bold text-on-primary">AC</span>
+      <span>arun.choudhary()</span>
+    </a>
+
+    <!-- Nav Links (Desktop) -->
+    <nav class="hidden md:flex items-center gap-1">
+      {navLinks.map((link) => (
+        <a 
+          href={link.href} 
+          class="rounded-full px-3 py-1.5 text-sm font-medium text-body transition-colors hover:bg-canvas-soft hover:text-ink"
+        >
+          {link.name}
+        </a>
+      ))}
+    </nav>
+
+    <!-- CTA -->
+    <div class="flex items-center gap-3">
+      <a 
+        href="#contact" 
+        class="hidden sm:inline-flex items-center justify-center rounded-pill bg-primary px-4 py-1.5 text-xs font-medium text-on-primary shadow-level2 transition-transform hover:scale-[1.02] active:scale-[0.98]"
+      >
+        Contact Me
+      </a>
+      
+      <!-- Mobile menu button -->
+      <button id="mobile-menu-btn" class="flex md:hidden rounded-sm p-1.5 text-ink hover:bg-canvas-soft-2 focus:outline-none" aria-label="Toggle menu">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-6 w-6">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile Menu Dropdown -->
+  <div id="mobile-menu" class="hidden border-b border-hairline bg-canvas px-6 py-4 md:hidden">
+    <nav class="flex flex-col gap-3">
+      {navLinks.map((link) => (
+        <a 
+          href={link.href} 
+          class="mobile-link text-base font-medium text-body py-1 hover:text-ink"
+        >
+          {link.name}
+        </a>
+      ))}
+      <a 
+        href="#contact" 
+        class="mobile-link mt-2 inline-flex items-center justify-center rounded-pill bg-primary py-2 text-sm font-medium text-on-primary"
+      >
+        Contact Me
+      </a>
+    </nav>
+  </div>
+</header>
+
+<script>
+  const menuBtn = document.getElementById('mobile-menu-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const mobileLinks = document.querySelectorAll('.mobile-link');
+
+  if (menuBtn && mobileMenu) {
+    menuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+
+    // Close menu when a link is clicked
+    mobileLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+      });
+    });
+  }
+</script>
