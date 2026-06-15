@@ -1,46 +1,113 @@
-# Astro Starter Kit: Basics
+# 🌌 Purple-Cyan Dark Theme Portfolio
 
-```sh
-npm create astro@latest -- --template basics
-```
+A modern, high-performance developer portfolio built with the **Astro** web framework and **Tailwind CSS v4**. It features a stunning glassmorphism design, smooth interactive animations, and a cohesive dark palette highlighted by purple-to-cyan gradient accents.
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+Inspired by the layout structure of Brittany Chiang's portfolio.
 
-## 🚀 Project Structure
+---
 
-Inside of your Astro project, you'll see the following folders and files:
+## 🚀 Key Features
+
+- **Responsive Design**: Optimized for mobile, tablet, and desktop viewports.
+- **Glassmorphic Navigation**: Sticky header with backdrop-blur navigation links and interactive hover highlights.
+- **Terminal Mockup**: An interactive CLI-style showcase component displaying developer commands and status.
+- **Comprehensive Sections**:
+  - 👤 **About**: Profile introduction, bio, and background.
+  - ⚡ **Skills**: Grid cards showcasing categorized technical expertise.
+  - 💼 **Experience**: Chronological timeline of professional work history.
+  - 💻 **Projects**: Glassmorphic project cards featuring technologies, github links, and live previews.
+  - 🎓 **Education**: Academic credentials.
+  - 📧 **Contact**: Seamless interaction with a built-in copy-to-clipboard email copy utility and animated feedback toast.
+- **Micro-Animations**: Hover scales, neon glow borders, gradient shifts, and smooth scrolls.
+
+---
+
+## 🛠️ Technology Stack
+
+- **Framework**: [Astro v6](https://astro.build/) (Static Site Generation for lightning-fast speeds)
+- **Styling**: [Tailwind CSS v4](https://tailwindcss.com/) & PostCSS
+- **Language**: [TypeScript](https://www.typescript.org/)
+- **Target Deployment**: Vercel
+
+---
+
+## 📂 Project Structure
 
 ```text
 /
-├── public/
-│   └── favicon.svg
-├── src
-│   ├── assets
-│   │   └── astro.svg
-│   ├── components
-│   │   └── Welcome.astro
-│   ├── layouts
-│   │   └── Layout.astro
-│   └── pages
-│       └── index.astro
-└── package.json
+├── .agents/              # Agent local skills & metadata (Excluded from Git/Vercel)
+├── public/               # Static assets (Favicons, images)
+├── src/
+│   ├── assets/           # Media assets
+│   ├── components/       # Reusable Astro components
+│   │   ├── Card.astro           # Generic container cards
+│   │   ├── Navbar.astro         # Header navigation
+│   │   └── TerminalMockup.astro # Animated terminal layout
+│   ├── layouts/          # Page layouts
+│   │   └── Layout.astro         # Main shell with metadata, fonts, global styles
+│   ├── pages/            # Page routing
+│   │   └── index.astro          # Single-page portfolio entry
+│   └── styles/
+│       └── global.css    # Global Tailwind v4 directives and CSS animations
+├── package.json          # Node dependencies & project scripts
+├── tsconfig.json         # TypeScript configuration
+└── astro.config.mjs      # Astro configuration
 ```
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+---
 
-## 🧞 Commands
+## ⚡ Getting Started
 
-All commands are run from the root of the project, from a terminal:
+### Prerequisites
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+Ensure you have **Node.js >= 22.12.0** installed.
 
-## 👀 Want to learn more?
+### Installation
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+Install all required dependencies:
+
+```bash
+npm install
+```
+
+### Development Server
+
+Run the development server locally:
+
+```bash
+npm run dev
+```
+
+The application will start at `http://localhost:4321`.
+
+### Production Build
+
+Compile the static production site into the `dist/` directory:
+
+```bash
+npm run build
+```
+
+Preview your local production build:
+
+```bash
+npm run preview
+```
+
+---
+
+## ☁️ Deployment
+
+### Deploying to Vercel
+
+This project is fully configured for deployment on [Vercel](https://vercel.com).
+
+1. Import the repository into your Vercel Dashboard.
+2. Vercel automatically detects **Astro** and configures the following settings:
+   - **Framework Preset**: `Astro`
+   - **Build Command**: `npm run build` or `astro build`
+   - **Output Directory**: `dist`
+3. Click **Deploy**.
+
+> [!NOTE]
+> All local configurations, local environments (`.env*.local`), vscode configurations (`.vscode/`), and agent-specific files (`.agents/`, `AGENTS.md`, `GEMINI.md`, `skills-lock.json`) are automatically excluded from the Git repository and Vercel deployments via `.gitignore`.

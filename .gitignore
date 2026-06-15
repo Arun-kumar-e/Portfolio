@@ -16,9 +16,25 @@ pnpm-debug.log*
 # environment variables
 .env
 .env.production
+.env*.local
 
 # macOS-specific files
 .DS_Store
 
-# jetbrains setting folder
+# IDE and Editor settings
 .idea/
+.vscode/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Agent specific files
+.agents/
+AGENTS.md
+GEMINI.md
+skills-lock.json
+
+# Local hosting / deployment cache
+.vercel/
