@@ -7,6 +7,6 @@ interface Props {
 const { class: className = '', hoverable = true } = Astro.props;
 ---
 
-<div class={`rounded-md border border-hairline bg-canvas p-6 shadow-level2 transition-all duration-200 ${hoverable ? 'hover:border-hairline-strong hover:shadow-level3' : ''} ${className}`}>
+<div class={`rounded-lg border border-border bg-surface/60 backdrop-blur-sm p-6 shadow-level2 transition-all duration-300 ${hoverable ? 'hover:border-primary/30 hover:shadow-glow-purple glow-card-hover' : ''} ${className}`}>
   <slot />
 </div>

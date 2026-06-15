@@ -12,44 +12,44 @@ interface Props {
 const { title, lines } = Astro.props;
 ---
 
-<div class="w-full overflow-hidden rounded-md border border-hairline bg-primary shadow-level3">
+<div class="w-full overflow-hidden rounded-lg border border-border bg-[#0d1117] shadow-level4">
   <!-- Terminal Title Bar -->
-  <div class="flex items-center justify-between bg-canvas-soft-2 px-4 py-2.5 border-b border-hairline select-none">
+  <div class="flex items-center justify-between bg-[#161b22] px-4 py-3 border-b border-border select-none">
     <div class="flex items-center gap-2">
       <!-- Terminal dots -->
-      <span class="h-3 w-3 rounded-full bg-error block border border-error-deep/20"></span>
-      <span class="h-3 w-3 rounded-full bg-warning block border border-warning-deep/20"></span>
-      <span class="h-3 w-3 rounded-full bg-cyan block border border-cyan-deep/20"></span>
+      <span class="h-3 w-3 rounded-full bg-[#ff5f56] block"></span>
+      <span class="h-3 w-3 rounded-full bg-[#ffbd2e] block"></span>
+      <span class="h-3 w-3 rounded-full bg-[#27c93f] block"></span>
     </div>
-    <span class="font-mono text-xs font-medium text-body tracking-normal">{title}</span>
+    <span class="font-mono text-xs font-medium text-text-muted tracking-normal">{title}</span>
     <div class="w-10"></div> <!-- spacing balancer -->
   </div>
 
   <!-- Terminal Content -->
-  <div class="p-5 font-mono text-[13px] leading-relaxed text-on-primary/95 bg-primary/95 select-text overflow-x-auto">
+  <div class="p-5 font-mono text-[13px] leading-relaxed text-[#e6edf3] select-text overflow-x-auto">
     <pre class="m-0 space-y-1 bg-transparent border-0 p-0 text-left rounded-none font-mono filter-none select-text whitespace-pre">
       {lines.map((line) => {
         if (line.type === 'command') {
           return (
-            <div class="text-on-primary font-semibold">
-              <span class="text-mute mr-2">$</span>{line.text}
+            <div class="text-[#f0f6fc] font-semibold">
+              <span class="text-[#79c0ff] mr-2">$</span>{line.text}
             </div>
           );
         } else if (line.type === 'success') {
           return (
-            <div class="text-cyan">{line.text}</div>
+            <div class="text-[#3fb950]">{line.text}</div>
           );
         } else if (line.type === 'info') {
           return (
-            <div class="text-violet-soft">{line.text}</div>
+            <div class="text-[#d2a8ff]">{line.text}</div>
           );
         } else if (line.type === 'error') {
           return (
-            <div class="text-error">{line.text}</div>
+            <div class="text-[#f85149]">{line.text}</div>
           );
         } else {
           return (
-            <div class="text-on-primary/80">{line.text}</div>
+            <div class="text-[#8b949e]">{line.text}</div>
           );
         }
       })}
